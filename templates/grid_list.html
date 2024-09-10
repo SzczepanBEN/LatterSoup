@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saved Puzzles</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="grid-list-container">
+        <h1>Saved Puzzles</h1>
+        <ul class="grid-list">
+            {% for grid in grids %}
+                <li>
+                    <div>
+                        <span>Subject: {{ grid.subject }}</span>
+                        <span>Size: {{ grid.size }}x{{ grid.size }}</span>
+                    </div>
+                    <a href="{{ url_for('print_grid', grid_id=grid.id) }}">Download PDF</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('generate_grid') }}" class="button">Create New Puzzle</a>
+    </div>
+</body>
+</html>

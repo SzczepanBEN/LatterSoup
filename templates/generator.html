@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter Soup AI Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Letter Soup AI Generator</h1>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form id="generator-form" method="POST">
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+            <div class="form-group">
+                <label for="size">Grid Size: <span id="size-value">25</span></label>
+                <input type="range" id="size" name="size" min="5" max="25" value="25" required>
+            </div>
+            <div class="form-group">
+                <label for="custom_words">Custom Words (optional, comma-separated):</label>
+                <input type="text" id="custom_words" name="custom_words">
+            </div>
+            <div class="form-group">
+                <label for="language">Language:</label>
+                <select id="language" name="language" required>
+                    <option value="English">English</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="French">French</option>
+                    <option value="German">German</option>
+                    <option value="Italian">Italian</option>
+                    <option value="Portuguese">Portuguese</option>
+                    <option value="Dutch">Dutch</option>
+                    <option value="Russian">Russian</option>
+                    <option value="Swedish">Swedish</option>
+                    <option value="Norwegian">Norwegian</option>
+                    <option value="Danish">Danish</option>
+                    <option value="Finnish">Finnish</option>
+                    <option value="Turkish">Turkish</option>
+                    <option value="Polish">Polish</option>
+                    <option value="Czech">Czech</option>
+                    <option value="Hungarian">Hungarian</option>
+                    <option value="Romanian">Romanian</option>
+                    <option value="Bulgarian">Bulgarian</option>
+                    <option value="Ukrainian">Ukrainian</option>
+                </select>
+            </div>
+            <button type="submit" id="generate-button">Generate Puzzle</button>
+        </form>
+
+        <p><a href="{{ url_for('list_grids') }}">View Saved Puzzles</a></p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var sizeSlider = document.getElementById('size');
+            var sizeValue = document.getElementById('size-value');
+            var generateButton = document.getElementById('generate-button');
+            var generatorForm = document.getElementById('generator-form');
+
+            sizeSlider.addEventListener('input', function() {
+                sizeValue.textContent = this.value;
+            });
+
+            generatorForm.addEventListener('submit', function(e) {
+                generateButton.disabled = true;
+                generateButton.classList.add('loading');
+                generateButton.textContent = 'Generating...';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter Soup Puzzle</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Letter Soup Puzzle</h1>
+    <div class="grid-container">
+        <div class="grid">
+            {% for row in grid %}
+                <div class="row">
+                    {% for letter in row %}
+                        <span class="cell">{{ letter }}</span>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="word-list">
+            <h2>Words to Find:</h2>
+            <ul>
+                {% for word in words %}
+                    <li>{{ word }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <a href="{{ url_for('print_grid', grid_id=grid_id) }}">Download PDF</a>
+    <a href="{{ url_for('generate_grid') }}">Generate New Puzzle</a>
+</body>
+</html>
