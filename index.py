@@ -16,7 +16,7 @@ import os
 load_dotenv()
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///letter_soup.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///letter_soup.db')
 app.config['SECRET_KEY'] = os.getenv('FLASK_SECRET_KEY')
 db = SQLAlchemy(app)
 
@@ -223,5 +223,4 @@ def list_grids():
     return render_template('grid_list.html', grids=grids)
 
 if __name__ == '__main__':
-    recreate_database()  # This will recreate the database with the new structure
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=int(os.getenv('PORT', 5000)))
