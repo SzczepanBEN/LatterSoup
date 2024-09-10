@@ -24,7 +24,7 @@ Letter Soup AI Generator is a Flask-based web application that creates customiza
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/letter-soup-ai-generator.git
+   git clone https://github.com/SzczepanBEN/letter-soup-ai-generator.git
    cd letter-soup-ai-generator
    ```
 
