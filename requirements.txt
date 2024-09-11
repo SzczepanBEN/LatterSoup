@@ -2,5 +2,5 @@ Flask==2.0.2
 Flask-SQLAlchemy==2.5.1
 gunicorn==20.1.0
 python-dotenv==0.19.2
-reportlab==3.6.9
+reportlab==3.5.68
 openai==0.27.0
