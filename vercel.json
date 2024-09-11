@@ -5,8 +5,8 @@
       "src": "index.py",
       "use": "@vercel/python",
       "config": { 
-        "runtime": "python3.12",
-        "buildCommand": "pip install -r requirements.txt && apt-get update && apt-get install -y wkhtmltopdf"
+        "maxLambdaSize": "15mb",
+        "runtime": "python3.10"
       }
     }
   ],
@@ -16,4 +16,4 @@
       "dest": "index.py"
     }
   ]
-}
+} 
