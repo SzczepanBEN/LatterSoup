@@ -1,6 +1,6 @@
-Flask==2.0.2
-Flask-SQLAlchemy==2.5.1
-gunicorn==20.1.0
-python-dotenv==0.19.2
-openai==0.27.0
-pdfkit==1.0.0
+Flask==2.3.3
+Flask-SQLAlchemy==2.6.0  # Verify on PyPI
+gunicorn==20.1.0  # Verify for any updates on PyPI
+python-dotenv==0.20.0
+openai==0.27.0  # Verify for any updates on the OpenAI API client documentation
+pdfkit==1.0.0  # Verify for any updates on PyPI
