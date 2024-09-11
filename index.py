@@ -18,8 +18,19 @@ import os
 load_dotenv()
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///letter_soup.db')
+
+# Database configuration
+if os.getenv('POSTGRES_URL'):
+    app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://{os.getenv('POSTGRES_USER')}:{os.getenv('POSTGRES_PASSWORD')}@{os.getenv('POSTGRES_HOST')}/{os.getenv('POSTGRES_DATABASE')}"
+else:
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///letter_soup.db')
+
+# Secret key configuration
 app.config['SECRET_KEY'] = os.getenv('FLASK_SECRET_KEY')
+
+# Disable SQLAlchemy track modifications (optional, for performance)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 db = SQLAlchemy(app)
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
