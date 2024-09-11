@@ -1,8 +1,6 @@
-Flask==2.3.3
-Flask-SQLAlchemy==3.1.1
-gunicorn==21.2.0
-python-dotenv==1.0.0
-openai==0.28.0
-reportlab==4.0.5
-psycopg2-binary==2.9.7
-psycopg2==None
+Flask==2.0.2
+Flask-SQLAlchemy==2.5.1
+gunicorn==20.1.0
+python-dotenv==0.19.2
+openai==0.27.0
+pdfkit==1.0.0
