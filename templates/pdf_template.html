@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Letter Soup Puzzle</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 20mm;
+        }
+        h1 { 
+            font-size: 16pt; 
+            font-weight: bold;
+            margin-bottom: 20mm;
+        }
+        .grid-container {
+            display: flex;
+            justify-content: center;
+        }
+        table { 
+            border-collapse: collapse; 
+        }
+        td { 
+            border: 1px solid black; 
+            width: {{ cell_size }}px; 
+            height: {{ cell_size }}px; 
+            text-align: center; 
+            font-weight: bold;
+            font-size: {{ cell_size * 0.4 }}px;
+        }
+        h2 { 
+            font-size: 12pt; 
+            font-weight: bold;
+            margin-top: 20mm;
+        }
+        .words {
+            font-size: 10pt;
+        }
+    </style>
+</head>
+<body>
+    <h1>Letter Soup Puzzle: {{ subject }} ({{ language }})</h1>
+    
+    <div class="grid-container">
+        <table>
+            {% for row in grid %}
+                <tr>
+                    {% for cell in row %}
+                        <td>{{ cell }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <h2>Words to Find:</h2>
+    <p class="words">{{ words|join(', ') }}</p>
+</body>
+</html>
